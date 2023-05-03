@@ -15,11 +15,34 @@ const Form: React.FC<FormProps> = (props) => {
         }
     }
 
+    let statusColor = "text-slate-500";
+    let statusText = null;
+    
+    if(!isPromptValid) {
+        statusColor = "text-red-400";
+        statusText = `Input must be ${characterLimit} long.`
+    }
+
     return <>
-           <p>Tell what your brands</p>
-           <input type="text" placeholder="coffee" value={props.prompt}  onChange={(e) => updatePromptVaLue(e.currentTarget.value)}/>
-           <div>{props.prompt.length}/{props.characterLimit}</div>
-           <button onClick={props.onSubmit}   disabled={props.isLoading || !isPromptValid}>Submit</button>
+           <div className="mb-6 text-gray-400">
+                <p>Tell what your brands</p>
+           </div>
+           
+           <input className="p-2 w-full rounded-md focus:outline-teal-400 focus:outline text-slate-700" type="text" placeholder="coffee" value={props.prompt}  onChange={(e) => updatePromptVaLue(e.currentTarget.value)}/>
+           
+           <div className=  {statusColor +  " flex justify-between my-2 mg-6 text-slate-500 text-sm"}>
+             <div>{statusText}</div>
+             <div>
+             {props.prompt.length}/{props.characterLimit}
+             </div>
+             
+           </div>
+           <button
+             className="bg-gradient-to-r from-teal-400 
+             to-blue-500 disabled:opacity-50 w-full p-2 rounded-md text-lg"
+             onClick={props.onSubmit}
+             disabled={props.isLoading || !isPromptValid}
+             >Submit </button>
            </>;
 }
 

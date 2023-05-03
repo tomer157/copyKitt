@@ -5,6 +5,8 @@ interface ResultsProps {
     onBack: any;
   }
   
+
+ 
   const Results: React.FC<ResultsProps> = (props) => {
     const keywordElements = [];
     for (let i = 0; i < props.keywords.length; i++) {
@@ -18,6 +20,8 @@ interface ResultsProps {
       );
       keywordElements.push(element);
     }
+
+   
   
     const keywordElementsHolder = (
       <div className="flex flex-wrap gap-2">{keywordElements}</div>
@@ -43,12 +47,12 @@ interface ResultsProps {
           {resultSection("Keywords", keywordElementsHolder)}
         </div>
         <button
-          className="bg-gradient-to-r from-teal-400 
-          to-blue-500 disabled:opacity-50 w-full p-2 rounded-md text-lg"
-          onClick={props.onBack}
-        >
-          Back
-        </button>
+        className="bg-gradient-to-r from-teal-400 
+        to-blue-500 disabled:opacity-50 w-full p-2 rounded-md text-lg"
+        onClick={props.onBack}
+      >
+        Back
+      </button>
       </>
     );
   };
